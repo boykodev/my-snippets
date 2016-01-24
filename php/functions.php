@@ -32,4 +32,12 @@ function strip_tag($string, $tag) {
     return preg_replace($pattern, '$1', $string);
 }
 
+// strip page from url
+function strip_url($url, $start, $end) {
+    $startPos = strrpos($url, $start) + strlen($start);
+    $endPos = strrpos($url, $end);
+    $strLength = $endPos - $startPos + 1;
+    return substr_replace($url, '', $startPos, $strLength);
+}
+
 ?>
