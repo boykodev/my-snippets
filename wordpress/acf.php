@@ -21,4 +21,11 @@ else :
     // no rows found
 endif;
 
+// add row to repeater field
+$field_key = "repeater_field";
+$post_id = "post_id";
+$value = get_field($field_key, $post_id);
+$value[] = array("repeater_field_value" => 'value');
+update_field($field_key, $value, $post_id);
+
 ?>
