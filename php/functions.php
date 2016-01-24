@@ -26,4 +26,10 @@ function get_echo() {
   return $out;
 }
 
+// strip tag from string
+function strip_tag($string, $tag) {
+    $pattern = '/<'. $tag .'[^>]*>(.*)<\/'. $tag .'[^>]*>/i';
+    return preg_replace($pattern, '$1', $string);
+}
+
 ?>
