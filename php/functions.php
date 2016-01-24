@@ -57,4 +57,10 @@ $opts = array('http' =>
 $context  = stream_context_create($opts);
 $result = file_get_contents('http://example.com/submit.php', false, $context);
 
+// count script execution time
+$start = microtime(true);
+# ...
+$time = microtime(true) - $start;
+echo "Time: $time";
+
 ?>
