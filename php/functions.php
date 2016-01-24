@@ -17,4 +17,13 @@ function get_snippet( $str, $wordCount = 10 ) {
   );
 }
 
+// prevent echo and get output
+function get_echo() {
+  ob_start();
+  echo "Hello, World";
+  $out = ob_get_contents();
+  ob_end_clean();
+  return $out;
+}
+
 ?>
