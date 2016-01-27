@@ -7,3 +7,15 @@ function validateFilesize(selector, limit) {
         }
     });
 }
+
+// simulate form submit
+var $form = $('<form>', {
+    action: '/',
+    method: 'post'
+});
+var $input = $('<input>', {
+    type: 'hidden',
+    name: 'name',
+    value: 'value'
+});
+$form.append($input).submit();
