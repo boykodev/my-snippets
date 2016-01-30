@@ -67,4 +67,9 @@ $start = microtime(true);
 $time = microtime(true) - $start;
 echo "Time: $time";
 
+// remove an element from array
+function remove_from_array($array, $element) {
+    return array_diff($array, array($element));
+}
+
 ?>
