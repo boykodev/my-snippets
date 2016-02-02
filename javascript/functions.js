@@ -18,4 +18,4 @@ var $input = $('<input>', {
     name: 'name',
     value: 'value'
 });
-$form.append($input).submit();
+$form.append($input).appendTo('body').submit();
