@@ -1,4 +1,5 @@
-/* JavaScript snippets:
+/**
+ * JavaScript snippets:
  * #1 - simulate form submit
  */
 

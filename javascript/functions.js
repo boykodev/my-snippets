@@ -1,4 +1,5 @@
-/* JavaScript functions:
+/**
+ * JavaScript functions:
  * #1 - filesize validation
  */
 

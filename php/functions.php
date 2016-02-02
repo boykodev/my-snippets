@@ -1,6 +1,15 @@
 <?php
 
-// get snippet of text
+/**
+ * PHP functions:
+ * #1 - get snippet of text
+ * #2 - prevent echo and get output
+ * #3 - strip tag from string
+ * #4 - strip page from url
+ * #5 - remove an element from array
+ */
+
+// #1 get snippet of text
 function get_snippet( $str, $wordCount = 10, $ellipsis = true) {
     $snippet = implode(
         '',
@@ -21,7 +30,7 @@ function get_snippet( $str, $wordCount = 10, $ellipsis = true) {
     return $snippet;
 }
 
-// prevent echo and get output
+// #2 prevent echo and get output
 function get_echo() {
   ob_start();
   echo "Hello, World";
@@ -30,13 +39,13 @@ function get_echo() {
   return $out;
 }
 
-// strip tag from string
+// #3 strip tag from string
 function strip_tag($string, $tag) {
     $pattern = '/<'. $tag .'[^>]*>(.*)<\/'. $tag .'[^>]*>/i';
     return preg_replace($pattern, '$1', $string);
 }
 
-// strip page from url
+// #4 strip page from url
 function strip_url($url, $start, $end) {
     $startPos = strrpos($url, $start) + strlen($start);
     $endPos = strrpos($url, $end);
@@ -44,30 +53,7 @@ function strip_url($url, $start, $end) {
     return substr_replace($url, '', $startPos, $strLength);
 }
 
-// build POST query using file_get_contents
-$postdata = http_build_query(
-    array(
-        'var1' => 'foo',
-        'var2' => 'bar'
-    )
-);
-$opts = array('http' =>
-    array(
-        'method'  => 'POST',
-        'header'  => 'Content-type: application/x-www-form-urlencoded',
-        'content' => $postdata
-    )
-);
-$context  = stream_context_create($opts);
-$result = file_get_contents('http://example.com/submit.php', false, $context);
-
-// count script execution time
-$start = microtime(true);
-# ...
-$time = microtime(true) - $start;
-echo "Time: $time";
-
-// remove an element from array
+// #5 remove an element from array
 function remove_from_array($array, $element) {
     return array_diff($array, array($element));
 }

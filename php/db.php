@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * General template for database connection
+ */
+
 $servername = "your_servername";
 $username = "your_username";
 $password = "your_password";
