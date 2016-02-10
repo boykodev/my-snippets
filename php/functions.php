@@ -7,6 +7,7 @@
  * #3 - strip tag from string
  * #4 - strip page from url
  * #5 - remove an element from array
+ * #6 - recursive glob function
  */
 
 // #1 get snippet of text
@@ -56,6 +57,15 @@ function strip_url($url, $start, $end) {
 // #5 remove an element from array
 function remove_from_array($array, $element) {
     return array_diff($array, array($element));
+}
+
+// #6 recursive glob function
+function rglob($pattern, $flags = 0) {
+    $files = glob($pattern, $flags);
+    foreach (glob(dirname($pattern).'/*', GLOB_ONLYDIR|GLOB_NOSORT) as $dir) {
+        $files = array_merge($files, rglob($dir.'/'.basename($pattern), $flags));
+    }
+    return $files;
 }
 
 ?>
