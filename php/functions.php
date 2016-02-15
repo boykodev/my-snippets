@@ -8,6 +8,7 @@
  * #4 - strip page from url
  * #5 - remove an element from array
  * #6 - recursive glob function
+ * #7 - isset for arrays
  */
 
 // #1 get snippet of text
@@ -66,6 +67,24 @@ function rglob($pattern, $flags = 0) {
         $files = array_merge($files, rglob($dir.'/'.basename($pattern), $flags));
     }
     return $files;
+}
+
+// #7 isset for arrays, prevents 'Undefined index' notice
+function isset_array($array, $index, $default = '') {
+    if (is_array($index)) {
+        if (count($index) == 1) {
+            if (isset($array[$index[0]])) return $array[$index[0]];
+        }
+        if (count($index) == 2) {
+            if (isset($array[$index[0]][$index[1]])) return $array[$index[0]][$index[1]];
+        }
+        if (count($index) == 3) {
+            if (isset($array[$index[0]][$index[1]][$index[2]])) return $array[$index[0]][$index[1]][$index[2]];
+        }
+    } else {
+        if (isset($array[$index])) return $array[$index];
+    }
+    return $default;
 }
 
 ?>
