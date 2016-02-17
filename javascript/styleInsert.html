@@ -1,5 +1,17 @@
 <style id="styleInsert"></style>
 
 <script>
+    // not working in Firefox
     styleInsert.sheet.addRule('css-selector', 'css-property: css-value');
+    
+    // works in all major browsers
+    var style = {
+        selector: 'css-selector',
+        property: 'css-property',
+        value: 'css-value',
+        getRule : function() {
+            return this.selector + '{' + this.property + ':' + this.value + '}';
+        }
+    };
+    styleInsert.sheet.insertRule(style.getRule(), 0);
 </script>
