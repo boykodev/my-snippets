@@ -10,9 +10,9 @@
 include(locate_template('template-name.php'));
 
 // #2 set wordpress site url to current domain
-$protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,5))=='https://'?'https://':'http://';
-$host_name = $_SERVER['HTTP_HOST'];
-define('WP_SITEURL', $protocol . $host_name);
-define('WP_HOME', $protocol . $host_name);
+$site_url = isset($_SERVER['HTTPS']) ? 'https://' : 'http://';
+$site_url .= $_SERVER['SERVER_NAME'];
+define('WP_SITEURL', $site_url);
+define('WP_HOME', $site_url);
 
 ?>
