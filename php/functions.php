@@ -9,6 +9,7 @@
  * #5 - remove an element from array
  * #6 - recursive glob function
  * #7 - isset for arrays
+ * #8 - prevent POST resubmit
  */
 
 // #1 get snippet of text
@@ -85,6 +86,13 @@ function isset_array($array, $index, $default = '') {
         if (isset($array[$index])) return $array[$index];
     }
     return $default;
+}
+
+// #8 - prevent POST resubmission
+function prevent_post_resubmit () {
+    $page_url = isset($_SERVER['HTTPS']) ? 'https://' : 'http://';
+    $page_url .= $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+    header("Location: $page_url");
 }
 
 ?>
