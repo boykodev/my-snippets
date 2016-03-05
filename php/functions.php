@@ -10,6 +10,7 @@
  * #6 - recursive glob function
  * #7 - isset for arrays
  * #8 - prevent POST resubmit
+ * #9 - access array PHP 5.3 way
  */
 
 // #1 get snippet of text
@@ -93,6 +94,34 @@ function prevent_post_resubmit () {
     $page_url = isset($_SERVER['HTTPS']) ? 'https://' : 'http://';
     $page_url .= $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
     header("Location: $page_url");
+}
+
+// #9 - access array from function return PHP 5.3 way
+function array_access($array, $i) {
+    if (is_array($i)) {
+        switch (count($i)) {
+            case 1:
+                if (isset($array[$i[0]])) {
+                    return $array[$i[0]];
+                }
+            case 2:
+                if (isset($array[$i[0]][$i[1]])) {
+                    return $array[$i[0]][$i[1]];
+                }
+            case 3:
+                if (isset($array[$i[0]][$i[1]][$i[2]])) {
+                    return $array[$i[0]][$i[1]][$i[2]];
+                }
+            default:
+                return array();
+        }
+    } else {
+        if (isset($array[$i])) {
+            return $array[$i];
+        } else {
+            return array();
+        }
+    }
 }
 
 ?>
