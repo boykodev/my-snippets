@@ -113,13 +113,13 @@ function access_array($array, $i) {
                     return $array[$i[0]][$i[1]][$i[2]];
                 }
             default:
-                return array();
+                return '';
         }
     } else {
         if (isset($array[$i])) {
             return $array[$i];
         } else {
-            return array();
+            return '';
         }
     }
 }
