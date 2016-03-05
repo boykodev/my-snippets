@@ -97,7 +97,7 @@ function prevent_post_resubmit () {
 }
 
 // #9 - access array from function return PHP 5.3 way
-function array_access($array, $i) {
+function access_array($array, $i) {
     if (is_array($i)) {
         switch (count($i)) {
             case 1:
